@@ -5,7 +5,7 @@ import android.provider.BaseColumns;
 
 public interface StarContract {
 
-    String AUTHORITY = "fr.istic.starproviderSSP";
+    String AUTHORITY = "fr.istic.mob.starproviderssp";
 
     Uri AUTHORITY_URI = Uri.parse("content://" + AUTHORITY);
 

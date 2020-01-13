@@ -84,16 +84,15 @@ public class StarManager extends Worker {
             db.close();
             dbAccess.close();
             database.close();
-            MainActivity.getmInstanceActivity().restartApp();
-            return Result.SUCCESS;
+            return MainActivity.getmInstanceActivity().restartApp();
         }
         return Result.FAILURE;
     }
 
     //La fonction getLien permet de récupérer le lien du fichier zip à télécharger par la suite.
     private String getLien(DB_Access dbAccess) {
-        //String day = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
-        String day = "2019-12-24";
+        String day = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+        //String day = "2019-12-24";
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
 
@@ -259,6 +258,7 @@ public class StarManager extends Worker {
                 stop.setDescription(line[3]);
                 stop.setLatitude(line[4]);
                 stop.setLongitude(line[5]);
+                stop.setId(Integer.valueOf(line[1]));
                 stop.setWheelchairBoarding(line[11]);
                 stops.add(stop);
                 //dbAccess.insertStops(stops);

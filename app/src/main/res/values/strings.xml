@@ -11,4 +11,7 @@
     <string name="txtErrorInternet">Erreur lors de la connection au site, vérifiez votre connexion à internet.</string>
     <string name="txtErrorZIP">Impossible d\'extraire le fichier zip téléchargé.</string>
     <string name="button">Valider</string>
+    <string name="permission_desc">OK</string>
+    <string name="permission_label">OK</string>
+
 </resources>

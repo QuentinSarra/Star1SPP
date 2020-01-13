@@ -54,6 +54,8 @@ public class DB_Starprovider extends SQLiteOpenHelper {
             + StarContract.BusRoutes.BusRouteColumns.COLOR + " TEXT NOT NULL,"
             + StarContract.BusRoutes.BusRouteColumns.TEXT_COLOR + " TEXT NOT NULL);";
 
+//STOP_CODE - HeadSign -
+
     public static final String createTrip = "CREATE TABLE IF NOT EXISTS  "+ StarContract.Trips.CONTENT_PATH +" ("
             + StarContract.Trips.TripColumns._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + StarContract.Trips.TripColumns.SERVICE_ID + " INTEGER NOT NULL, "
@@ -65,6 +67,7 @@ public class DB_Starprovider extends SQLiteOpenHelper {
 
     public static final String createStop ="CREATE TABLE IF NOT EXISTS  "+ StarContract.Stops.CONTENT_PATH +" ("
             + StarContract.Stops.StopColumns._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + StarContract.Stops.StopColumns.STOP_ID + " INTEGER NOT NULL, "
             + StarContract.Stops.StopColumns.DESCRIPTION  + " TEXT, "
             + StarContract.Stops.StopColumns.LATITUDE + " REAL NOT NULL, "
             + StarContract.Stops.StopColumns.LONGITUDE+ " REAL NOT NULL, "

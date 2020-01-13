@@ -26,6 +26,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+import androidx.work.ListenableWorker;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 
@@ -97,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
             cursor.moveToNext();
         }
         final Spinner spin = findViewById(R.id.line);
-        CustomAdapter adapter = new CustomAdapter(this,lineData,backcolor,txtcolor);
+            CustomAdapter adapter = new CustomAdapter(this,lineData,backcolor,txtcolor);
         spin.setAdapter(adapter);
 
         final Spinner spinDir = findViewById(R.id.direction);
@@ -265,7 +266,7 @@ public class MainActivity extends AppCompatActivity {
     public SQLiteDatabase getDb(){
         return db;
     }
-    public void restartApp() {
+    public StarManager.Result restartApp() {
         if (Build.VERSION.SDK_INT >= 11) {
             runOnUiThread(new Runnable() {
                 @Override
@@ -274,6 +275,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
+        return ListenableWorker.Result.SUCCESS;
     }
 }
 

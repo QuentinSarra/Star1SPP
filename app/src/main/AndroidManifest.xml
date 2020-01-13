@@ -23,6 +23,7 @@
             android:name=".StarProvider"
             android:authorities="fr.istic.mob.starproviderssp"
             android:enabled="true"
+            android:readPermission="android.permission.permRead"
             android:exported="true">
         </provider>
     </application>

@@ -52,6 +52,7 @@ public interface StarContract {
                 "vnd.android.cursor.item/vnd.fr.istic.starproviderSSP.stop";
         interface StopColumns extends BaseColumns {
             String NAME = "stop_name";
+            String STOP_ID = "stop_code";
             String DESCRIPTION = "stop_desc";
             String LATITUDE = "stop_lat";
             String LONGITUDE = "stop_lon";
@@ -94,6 +95,23 @@ public interface StarContract {
             String START_DATE = "start_date";
             String END_DATE = "end_date";
         }
+    }
+
+    interface Join1{
+        String CONTENT_PATH = "join1";
+        Uri CONTENT_URI = Uri.withAppendedPath(AUTHORITY_URI, CONTENT_PATH);
+        String CONTENT_TYPE =
+                "vnd.android.cursor.dir/vnd.fr.istic.starproviderSSP.join1";
+        String CONTENT_ITEM_TYPE =
+                "vnd.android.cursor.item/vnd.fr.istic.starproviderSSP.join1";
+        interface CalendarColumns extends BaseColumns {
+            String TRIP_ID = "trip_id";
+            String ARRIVAL_TIME = "arrival_time";
+            String DEPARTURE_TIME = "departure_time";
+            String STOP_ID = "stop_id";
+            String STOP_SEQUENCE = "stop_sequence";
+        }
+
     }
 
     interface RouteDetails {

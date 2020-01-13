@@ -84,6 +84,7 @@ public class DB_Access {
                 values.put(StarContract.Stops.StopColumns.LATITUDE,stop.getLatitude());
                 values.put(StarContract.Stops.StopColumns.LONGITUDE,stop.getLongitude());
                 values.put(StarContract.Stops.StopColumns.NAME,stop.getName());
+                values.put(StarContract.Stops.StopColumns.STOP_ID,stop.getId());
                 values.put(StarContract.Stops.StopColumns.WHEELCHAIR_BOARDING,stop.getWheelchairBoarding());
                 database.insert(StarContract.Stops.CONTENT_PATH,null,values);
             }

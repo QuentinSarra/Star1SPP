@@ -74,18 +74,20 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //getJSON lance le service qui récupère les données.
+        MainAct = this;
         getJSON();
 
 
         //Les données de la BDD sont cherchées pour compléter les spinners. Il faut que la BDD soit remplie pour
         //que les spinners aussi.
-        String[] backcolor = new String[152];
-        final String[] lineData = new String[152];
-        String[] txtcolor = new String[152];
         int position;
         final SQLiteDatabase dbLine = database.getReadableDatabase();
         String query = "SELECT * FROM "+ StarContract.BusRoutes.CONTENT_PATH;
         Cursor cursor = dbLine.rawQuery(query,null);
+        String[] backcolor = new String[cursor.getCount()];
+        final String[] lineData = new String[cursor.getCount()];
+        String[] txtcolor = new String[cursor.getCount()];
+        Log.d("Query",Integer.toString(cursor.getCount()));
         cursor.moveToNext();
         while (!cursor.isAfterLast()){
             position = cursor.getInt(0)-1;
@@ -108,10 +110,6 @@ public class MainActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-
-        MainAct = this;
-
-
     }
 
     //On cree les différentes notifications de l'application
@@ -159,6 +157,26 @@ public class MainActivity extends AppCompatActivity {
         notificationManager = NotificationManagerCompat.from(this);
         notificationManager.notify(CURRENT_ID, builder.build());
         CURRENT_ID++;
+    }
+    public void createNotification4() {
+        String textTitle = "Premier Import";
+        String textContent = "\nChargement de la base de données";
+
+        builder.setSmallIcon(R.drawable.ic_stat_onesignal_default)
+                .setContentTitle(textTitle)
+                .setContentText(textContent)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setStyle(new NotificationCompat.BigTextStyle()
+                        .bigText(textContent));
+
+
+        builder.setProgress(PROGRESS_MAX, PROGRESS_CURRENT, false);
+
+
+        notificationManager = NotificationManagerCompat.from(this);
+
+        notificationManager.notify(CURRENT_ID, builder.build());
+
     }
 
     private void createNotificationChannel() {
@@ -243,6 +261,19 @@ public class MainActivity extends AppCompatActivity {
             adapterDir.add(e);
         }
         return adapterDir;
+    }
+    public SQLiteDatabase getDb(){
+        return db;
+    }
+    public void restartApp() {
+        if (Build.VERSION.SDK_INT >= 11) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    recreate();
+                }
+            });
+        }
     }
 }
 
